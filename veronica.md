@@ -1,4 +1,4 @@
-@VeronicaKumar's life
+@VeronicaKumar's Life
 ===============
 
 - 01/2017 Conceived in [India](To be updated with Pics)
