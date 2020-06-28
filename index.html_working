@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
-<title>Robin's Life</title>
+<title>Life</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="format-detection" content="telephone=no">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300">
-
-<!-- This has been hacked to make it possible to process multiple lives by passing the info through the life variable in the URL. 
-Just adjust the name.config json and name.css and name.md files accordingly -->
-
 <style>
+.bgimg {
+  background-image: url('https://www.w3schools.com//w3images/forestbridge.jpg');
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 25px;
+}
 .middle {
   position: sticky;
   top: 50%;
@@ -24,37 +30,34 @@ hr {
   width: 40%;
 }
 
-html{
-	font-family: Open Sans, Helvetica, Arial, sans-serif;
-	cursor: -webkit-grab;
-	cursor: -moz-grab;
-	cursor: grab;
-}
-html{
-	height: 100%;
-}
 body{
-	min-height: 100%;
+	font-family: Open Sans, Helvetica, Arial, sans-serif;
 	color: #fff;
-	background-color: #384047;
-	margin: 0;
-	padding: 0;
+	#background-color: #384047;
+	#margin: 0;
+	#padding: 0;
 	font-size: 12px;
 	-webkit-text-size-adjust: none;
-	position: relative;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
   background-image: url('https://www.w3schools.com//w3images/forestbridge.jpg');
   height: 100%;
   background-size: cover;
-
 }
 a{
 	color: #fff;
 }
 header{
+	z-index: 3;
+	background: linear-gradient(to bottom, rgba(56,64,71,0) 0%,rgba(56,64,71,.5) 20%,rgba(56,64,71,1) 50%,rgba(56,64,71,.5) 80%,rgba(56,64,71,0) 100%);
 	position: fixed;
 	bottom: 0;
+	left: 0;
 	margin: 0;
-	padding: 20px;
+	padding: 10px;
 }
 header a{
 	margin-left: 1em;
@@ -68,7 +71,6 @@ header a:hover{
 h1{
 	display: inline;
 	font-size: 20px;
-	font-weight: normal;
 	line-height: 1em;
 	opacity: .5;
 	z-index: 3;
@@ -76,30 +78,67 @@ h1{
 	white-space: nowrap;
 }
 #life{
-	padding-top: 40px;
-	padding-bottom: 5em;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	cursor: -webkit-grab;
+	cursor: -moz-grab;
+	cursor: grab;
 }
-#life section.year{
-	min-height: 100%;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	border-left: 1px dashed rgba(255,255,255,.2);
-	color: rgba(255,255,255,.3);
+#life-years{
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	padding-left: 10px;
-	padding-top: 10px;
+	white-space: nowrap;
 	pointer-events: none;
+}
+#life-years .year{
+	display: inline-block;
+	box-sizing: border-box;
+	color: #fff;
 	font-weight: 300;
 	white-space: nowrap;
-	color: white;
+	box-sizing: border-box;
+	height: 100%;
+	border-left: 1px dashed rgba(255,255,255,.2);
+}
+#life-years .year:first-child{
+	border-left: 0;
+}
+#life-years .year span{
+	background: linear-gradient(to bottom, rgba(56,64,71,1) 30%,rgba(56,64,71,0) 100%);
+	display: block;
+	padding: 10px;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	z-index: 3;
+}
+#life-years .year span i{
+	opacity: .5;
+	font-style: normal;
+}
+#life-events{
+	padding-top: 40px;
+	padding-bottom: 5em;
+	position: relative;
+}
+#life-events:after{
+	content: '';
+	display: block;
+	clear: left;
 }
 #life .event{
 	padding-right: 20px;
 	padding-bottom: 5px;
 	vertical-align: middle;
 	white-space: nowrap;
+	float: left;
+	clear: left;
 }
 #life .event b{
 	font-weight: normal;
@@ -109,10 +148,10 @@ h1{
 	display: inline-block;
 	overflow: hidden;
 	height: 0;
-	border: 4px solid #838D99;
+	border: 4px solid #fff;
 	border-radius: 4px;
 	margin-right: 10px;
-	opacity: .6;
+	opacity: .3;
 	position: relative;
 	left: -2px;
 }
@@ -120,11 +159,8 @@ h1{
 	opacity: .5;
 }
 </style>
-
-
 <header>
-	<h1 id="title">Life</h1>
-	<a href="https://github.com/cheeaun/life">Fork me</a>
+	<h1 id="title">Veronica's Life</h1>
 </header>
 <div id="life"></div>
 <script>
@@ -153,7 +189,6 @@ h1{
 			life.loadConfig(function(config){
 				life.config = life.utils.extend(life.config, config);
 				if (life.config.customStylesheetURL) life.injectStylesheet(life.config.customStylesheetURL);
-				if (life.config.customImage) life.injectFBImage(life.config.customImage);
 
 				life.fetch(function(response){
 					var data = life.parse(response);
@@ -164,8 +199,7 @@ h1{
 		},
 		loadConfig: function(fn){
 			var xhr = new XMLHttpRequest();
-			var jsonConfig = life.getParameterByName('life')+'.config.json';
-			xhr.open('GET', jsonConfig , true);
+			xhr.open('GET', 'config.json', true);
 			xhr.onload = function(){
 				if (xhr.status == 200){
 					fn(JSON.parse(xhr.responseText));
@@ -178,28 +212,15 @@ h1{
 			};
 			xhr.send();
 		},
-		getParameterByName: function(name){
-			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-			results = regex.exec(location.search);
-			return results === null ? "veronica" : decodeURIComponent(results[1].replace(/\+/g, " "));
-		},
 		injectStylesheet: function(url){
 			var link = document.createElement('link');
 			link.rel = 'stylesheet';
 			link.href = url;
 			document.body.appendChild(link);
 		},
-		injectFBImage: function(url){
-			var link = document.createElement('link');
-			link.rel = 'image_src';
-			link.href = url;
-			document.body.appendChild(link);
-		},
 		fetch: function(fn){
 			var xhr = new XMLHttpRequest();
-			var lifeInfo = life.config.lifeInfo;
-			xhr.open('GET', lifeInfo , true);
+			xhr.open('GET', 'life.md', true);
 			xhr.onload = function(){
 				if (xhr.status == 200) fn(xhr.responseText);
 			};
@@ -209,7 +230,9 @@ h1{
 			var list = response.match(/\-\s+[^\n\r]+/ig);
 			var data = [];
 			list.forEach(function(l){
+				console.log(l);
 				var matches = l.match(/\-\s+([\d\/\-\~]+)\s(.*)/i);
+				console.log(matches);
 				var time = matches[1];
 				var text = matches[2];
 				data.push({
@@ -225,6 +248,20 @@ h1{
 		parseTime: function(time, point){
 			if (!point) point = 'start';
 			var data = {};
+			
+			//Patch - to consider end date of any event as current date if its mentioned as 0000
+			//for e.g. 
+			//- 01/2019-0000 Whole bunch of interesting events till today
+			//
+			var today = new Date();
+			var dd = String(today.getDate()).padStart(2, '0');
+			var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+			var yyyy = today.getFullYear();
+
+			today = mm + '/' + dd + '/' + yyyy;
+			//time = time.replace("TODAY",today);
+			//
+
 			if (/^\~\d+$/.test(time)){ // ~YYYY
 				data = {
 					startYear: parseInt(time.slice(1), 10),
@@ -257,7 +294,7 @@ h1{
 			return data;
 		},
 		firstYear: null,
-		renderEvent: function(d,nd){
+		renderEvent: function(d){
 			var firstYear = life.firstYear;
 			var yearLength = life.config.yearLength;
 			var monthLength = yearLength/12;
@@ -308,11 +345,10 @@ h1{
 				d.text = d.text.replace(link[0], "<a href='" + link[2] + "'" + link_attr + ">" + link[1] + "</a>");
 			}
 
-			return '<div class="event c_'+ nd +'" style="margin-left: ' + offset.toFixed(2) + 'px">'
+			return '<div class="event" style="margin-left: ' + offset.toFixed(2) + 'px">'
 				+ '<div class="time" style="width: ' + width.toFixed(2) + 'px"></div>'
-				+ '<b>' + d.time.title + '</b> ' + d.text + '&nbsp;&nbsp;'
+				+ '<b>' + d.time.title + '</b> ' + d.text
 				+ '</div>';
-			return '';
 		},
 		renderYears: function(firstYear, lastYear){
 			var dayLength = life.config.yearLength/12/30;
@@ -320,10 +356,10 @@ h1{
 			var days = 0;
 			var hideAge = life.config.hideAge;
 			for (var y=firstYear, age = 0; y<=lastYear+1; y++, age++){
-				html += '<section class="year age_' + age + '" style="left: ' + (days*dayLength).toFixed(2) + 'px">'
-					+ y + (hideAge ? '' : (' (' + age + ')'))
-					+ '</section>';
-				days += (y % 4 == 0) ? 366 : 365;
+				var days = (y % 4 == 0) ? 366 : 365;
+				html += '<div class="year" style="width: ' + (days*dayLength).toFixed(2) + 'px"><span>'
+					+ y + (hideAge ? '' : (' <i>(' + age + ')</i>'))
+					+ '</span></div>';
 			}
 			return html;
 		},
@@ -343,29 +379,31 @@ h1{
 			});
 			life.firstYear = firstYear;
 
-			var html = life.renderYears(firstYear, lastYear);
-			var counter = 0;
+			var html = '<div id="life-events">';
+			// 'comment_' class name is to hide it from Safari Reader
+			html += '<div id="life-years" class="comment_">' + life.renderYears(firstYear, lastYear) + '</div>';
 			data.forEach(function(d){
-			    counter = counter + 1;
-				html += life.renderEvent(d,counter);
+				html += life.renderEvent(d);
 			});
-                        html += "<div class='middle'><hr><p>www.veronicakumar.com</p></div>";
+			html += '</div>';
+			html += "<div class='middle'><hr><p>www.veronicakumar.com</p></div>"; 
+
 			life.$el.innerHTML = html;
 		}
 	};
 
 	var slider = {
 		startingMousePostition: {},
-		startingPagePosition: {},
+		containerOffset: {},
 		init: function(){
 			window.addEventListener('mousedown', function(event){
 				slider.startingMousePostition = {
 					x: event.clientX,
 					y: event.clientY
 				};
-				slider.startingPagePosition = {
-					x: window.pageXOffset,
-					y: window.pageYOffset
+				slider.containerOffset = {
+					x: life.$el.scrollLeft,
+					y: life.$el.scrollTop
 				};
 				window.addEventListener('mousemove', slider.slide);
 			});
@@ -375,9 +413,10 @@ h1{
 		},
 		slide: function(event){
 			event.preventDefault();
-			var x = slider.startingPagePosition.x + (slider.startingMousePostition.x - event.clientX);
-			var y = slider.startingPagePosition.y + (slider.startingMousePostition.y - event.clientY);
-			window.scrollTo(x, y);
+			var x = slider.containerOffset.x + (slider.startingMousePostition.x - event.clientX);
+			var y = slider.containerOffset.y + (slider.startingMousePostition.y - event.clientY);
+			life.$el.scrollLeft = x;
+			life.$el.scrollTop = y;
 		}
 	};
 

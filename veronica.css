@@ -1,0 +1,54 @@
+#life section.year.age_5,
+#life section.year.age_10,
+#life section.year.age_15,
+#life section.year.age_20,
+#life section.year.age_20,
+#life section.year.age_30,
+#life section.year.age_35,
+#life section.year.age_40,
+#life section.year.age_45,
+#life section.year.age_50,
+#life section.year.age_55,
+#life section.year.age_50
+{opacity:.1;
+
+background: -moz-linear-gradient(left,  rgba(130,130,130,0.98) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(130,130,130,0.98)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left,  rgba(130,130,130,0.98) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left,  rgba(130,130,130,0.98) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left,  rgba(130,130,130,0.98) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+background: linear-gradient(to right,  rgba(130,130,130,0.98) 0%,rgba(0,0,0,0) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fa828282', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+
+
+}
+#life .c_1 .time  { border: 4px solid #CD5454   !important}
+
+#life .c_2 .time  { border: 4px solid #2B64CB  !important}
+
+#life .c_3 .time,
+#life .c_4 .time,
+#life .c_5 .time,
+#life .c_7 .time,
+#life .c_8 .time  { border: 4px solid #FF57AA !important}
+
+#life .time  { border: 4px solid #aecc37 !important}
+
+#life .c_9 { margin-top: 15px; margin-bottom: 15px;}
+
+#life .c_9 .time, #life .c_18 .time { border: 4px solid #838D99   !important}
+
+#life .c_28 .time { margin-top: 30px;}
+
+
+#life .c_14 .time {border: 4px solid red   !important}
+#life .c_16 .time {border: 4px solid #838D99   !important}
+#life .c_20 .time,
+#life .c_22 .time {border: 4px solid red   !important}
+
+
+
+
+
+
+
