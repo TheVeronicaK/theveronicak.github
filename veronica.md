@@ -1,14 +1,14 @@
 @VeronicaKumar's Life
 ===============
 
-- 01/2017 Conceived in [India](To be updated with Pics)
-- 28/10/2017 Born in The [United Kingdom](To be updated with Pics)
-- 04/2018 [First International trip to India](To be updated with Pics) &#9992;
-- 10/2018 [First trip to Europe - Nice(France)](To be updated with Pics) &#9992;
-- 02/2019 [Trip to Faro(Portugal)](To be updated with Pics) &#9992;
+- 01/2017 Conceived in [India](https://www.veronicakumar.com/coming_soon.html)
+- 28/10/2017 Born in The [United Kingdom](https://www.veronicakumar.com/coming_soon.html)
+- 04/2018 [First International trip to India](https://www.veronicakumar.com/coming_soon.html) &#9992;
+- 10/2018 [First trip to Europe - Nice(France)](https://www.veronicakumar.com/coming_soon.html) &#9992;
+- 02/2019 [Trip to Faro(Portugal)](https://www.veronicakumar.com/coming_soon.html) &#9992;
 - 06/2019 Started Nursery
-- 09/2019 [Trip to Switzerland](To be updated with Pics) &#9992;
-- 11/2019 [Trip to India](To be updated with Pics) &#9992;
+- 09/2019 [Trip to Switzerland](https://www.veronicakumar.com/coming_soon.html) &#9992;
+- 11/2019 [Trip to India](https://www.veronicakumar.com/coming_soon.html) &#9992;
 - 01/2020 Lost my Nani (Mom's mother) &#128546;
 - 28/10/2017-~ Busy being a baby - Ongoing
 - 01/2019-~ Whole bunch of interesting events
